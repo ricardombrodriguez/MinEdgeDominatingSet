@@ -18,20 +18,13 @@ class Problem:
     def exaustive_search(self):
         
         basic_operations = 0
-        best_subset = None
-
-        print(f"Expected edges: {2**len(self.graph.edges)}")
-
         for subset in self.generate_subsets(self.graph.edges):
             remaining_edges = self.graph.edges
             for edge in subset:
                 basic_operations += 1
                 remaining_edges = [ e for e in list(remaining_edges) if e[0] not in edge and e[1] not in edge ]
-                if (not remaining_edges and best_subset and len(subset) < len(best_subset)) or (not remaining_edges and not best_subset):
-                    best_subset = subset
-                    break
-
-        return (best_subset, basic_operations)
+                if not remaining_edges:
+                    return (subset, basic_operations)
 
     
     def generate_subsets(self, edges):

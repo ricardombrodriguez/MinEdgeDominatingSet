@@ -12,7 +12,6 @@ class Graph:
 
         self.num_vertices = num_vertices
         self.edge_percentage = edge_percentage
-        
         self.create_vertices()
         self.create_edges()
 
@@ -36,21 +35,16 @@ class Graph:
         max_edges_graph = self.num_vertices * (self.num_vertices - 1) / 2 
         num_edges =  max( [round((self.edge_percentage * max_edges_graph) / 100), min_edges_graph] )
         unconnected_vertices = list(self.vertices.keys())
-
         self.adjacency_list = {}
 
         for i in range(num_edges):
-
-            while True:
-
+            
+            while 1:
                 e1 = randint(1,self.num_vertices) if not unconnected_vertices else unconnected_vertices.pop(randint(0,len(unconnected_vertices)-1))
                 e2 = randint(1,self.num_vertices)
 
                 if not (e1 == e2 or (self.adjacency_list and ( ( e1 in self.adjacency_list and e2 in self.adjacency_list[e1] ) or ( e2 in self.adjacency_list and e1 in self.adjacency_list[e2] ) ) )):
-
-                    if e2 in unconnected_vertices:
-                        unconnected_vertices.remove(e2)
-                    
+    
                     if e1 not in self.adjacency_list:
                         self.adjacency_list[e1] = [e2]
                     else:
@@ -60,7 +54,6 @@ class Graph:
                         self.adjacency_list[e2] = [e1]
                     else:
                         self.adjacency_list[e2] += [e1]
-
                     break
 
                 elif e1 == e2:

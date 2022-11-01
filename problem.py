@@ -16,7 +16,6 @@ class Problem:
         
 
     def exaustive_search(self):
-        
         basic_operations = 0
         for subset in self.generate_subsets(self.graph.edges):
             remaining_edges = self.graph.edges
@@ -47,7 +46,7 @@ class Problem:
             edge = edges.pop(0)
             adjacency_list = self.verify_edge_dominating_set(edges,edge)
             if not adjacency_list:
-                return ([edge], counter)                                                   # min edge found
+                return ([edge], counter)                                                   
             greedy = self.greedy_search(adjacency_list, counter)
             return ( [edge] + greedy[0], greedy[1])
 

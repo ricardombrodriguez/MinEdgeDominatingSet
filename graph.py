@@ -16,7 +16,6 @@ class Graph:
         self.create_edges()
 
     def create_vertices(self):
-
         self.vertices = {}
         for i in range(self.num_vertices):
             while True:
@@ -38,24 +37,20 @@ class Graph:
         self.adjacency_list = {}
 
         for i in range(num_edges):
-            
             while 1:
                 e1 = randint(1,self.num_vertices) if not unconnected_vertices else unconnected_vertices.pop(randint(0,len(unconnected_vertices)-1))
                 e2 = randint(1,self.num_vertices)
 
                 if not (e1 == e2 or (self.adjacency_list and ( ( e1 in self.adjacency_list and e2 in self.adjacency_list[e1] ) or ( e2 in self.adjacency_list and e1 in self.adjacency_list[e2] ) ) )):
-    
                     if e1 not in self.adjacency_list:
                         self.adjacency_list[e1] = [e2]
                     else:
                         self.adjacency_list[e1] += [e2]
-
                     if e2 not in self.adjacency_list:
                         self.adjacency_list[e2] = [e1]
                     else:
                         self.adjacency_list[e2] += [e1]
                     break
-
                 elif e1 == e2:
                     unconnected_vertices.append(e1)
 

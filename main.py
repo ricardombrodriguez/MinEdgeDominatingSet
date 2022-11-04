@@ -24,19 +24,19 @@ def create_graphs():
             results.write("{: <12} | {: <10} | {: <15} | {: <16} | {: >20}\n".format("Search type","Vertices","Edge percentage","Basic operations","Time (s)"))
 
     vertices = MIN_GRAPH_VERTICES
-    # while True:
+    
     while 1:
         for edge_percentage in MAX_NUMBER_EDGES:
             print()
             print(f"num vertices: {vertices} | edge percentage: {edge_percentage}%)")
             g = Graph(vertices,edge_percentage)
-            # greedy = Problem(g,"greedy")
-            # save_result(greedy,edge_percentage)
-            # save_graph(greedy,edge_percentage)
+            greedy = Problem(g,"greedy")
+            save_result(greedy,edge_percentage)
+            save_graph(greedy,edge_percentage)
             exaustive = Problem(g,"exaustive")
             save_result(exaustive,edge_percentage)
             save_graph(exaustive,edge_percentage)
-        vertices += 1
+        vertices += 1 
 
 def save_result(p, edge_percentage):
     with open('results.txt', 'a') as results:
